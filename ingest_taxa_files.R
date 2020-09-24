@@ -3,11 +3,11 @@ ingest_taxa = function(file_name){
   # Read file
   taxtable = read.csv(file_name)
   # Convert sample names to upper case if needed
-  names(taxtable) = toupper(names(taxtable))
+#  names(taxtable) = toupper(names(taxtable))
   # Add a level to the taxonomy column factor and then specify the last row as
   # "_Unknown_" because R won't allow NA values in row or column names
-  levels(taxtable$X) = c(levels(taxtable$X), "_Unknown_")
-  taxtable$X[dim(taxtable)[1]] = "_Unknown_"
+  levels(taxtable$X) = c(levels(taxtable$X), "Unknown")
+  taxtable$X[which(is.na(taxtable$X))] = "Unknown"
   row.names(taxtable) = taxtable$X
   # Remove taxonomy column since it is redundant with row.names
   taxtable$X = NULL
@@ -23,3 +23,5 @@ ingest_taxa = function(file_name){
 phyla = ingest_taxa("phyla_by_sample.csv")
 classes = ingest_taxa("classes_by_sample.csv")
 orders = ingest_taxa("orders_by_sample.csv")
+families = ingest_taxa("families_by_sample.csv")
+genera  = ingest_taxa("genera_by_sample.csv")

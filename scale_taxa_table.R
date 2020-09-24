@@ -5,8 +5,6 @@ scale_taxa_table = function(taxatable){
   }
   taxatable$Total = totalcolumn
   scaledtable = cbind(SampleName = taxatable$SampleName, (taxatable[,2:(length(names(taxatable)) - 1)] / taxatable$Total))
-  rownames(scaledtable) = scaledtable$SampleName
-  names(scaledtable)[grep("_Unknown_", names(scaledtable))] = "Other"
-  scaledtable$SampleName = NULL
+  
   return(scaledtable)
 }
