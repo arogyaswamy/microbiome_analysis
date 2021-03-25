@@ -1,7 +1,7 @@
 relative.abundance = function(otu.table){
-  # Given an OTU table as a data.frame, this function returns a data.frame
-  # containing relative abundances of those OTUs. In the OTU table, columns
-  # should represent OTUs and rows should represent samples.
+  # Given an feature table as a data.frame, this function returns a data.frame
+  # containing relative abundances of those features (like OTUs) In the feature table, columns
+  # should represent features and rows should represent samples.
   reads.per.sample = rowSums(otu.table)
   for(i in 1:length(names(otu.table))){
     for(j in 1:length(reads.per.sample)){
