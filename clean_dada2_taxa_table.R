@@ -5,6 +5,9 @@ clean.dada2.taxa.table = function(tax.tbl){
   ## the genus and species would both say "Unassigned Family Felidae". For the
   ## top-level taxonomic rank, an extra step is added, so that those features
   ## are just called "Unassigned"
+  
+  ## In case input is a matrix, convert to a data.frame
+  if(class(tax.tbl) != "data.frame"){ tax.tbl = as.data.frame(tax.tbl) }
   tax.levels = ncol(tax.tbl)
   
   ## Since you can't easily assign elements to new levels in factors, we convert
