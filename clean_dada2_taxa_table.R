@@ -7,7 +7,7 @@ clean.dada2.taxa.table = function(tax.tbl){
   ## are just called "Unassigned"
   
   ## In case input is a matrix, convert to a data.frame
-  if(class(tax.tbl) != "data.frame"){ tax.tbl = as.data.frame(tax.tbl) }
+  if(!is.data.frame(tax.tbl)){ tax.tbl = as.data.frame(tax.tbl) }
   tax.levels = ncol(tax.tbl)
   
   ## Since you can't easily assign elements to new levels in factors, we convert
